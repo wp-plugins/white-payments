@@ -1,0 +1,55 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "0139c92b208f1dc24e00ca0897f96fb9",
+    "packages": [
+        {
+            "name": "white/white",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WhitePayments/white-php.git",
+                "reference": "01d58b1fbb0d8e2e49e6352a95353c6e11d60af1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WhitePayments/white-php/zipball/01d58b1fbb0d8e2e49e6352a95353c6e11d60af1",
+                "reference": "01d58b1fbb0d8e2e49e6352a95353c6e11d60af1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "White": "src/",
+                    "White\\Test": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "White makes accepting online payments in the Middle East a piece of cake",
+            "time": "2014-09-28 14:12:26"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ],
+    "prefer-stable": false,
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
