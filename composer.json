@@ -1,5 +1,5 @@
 {
   "require": {
-    "white/white": "*"
+    "white/white": "1.*"
   }
 }
