@@ -2,8 +2,8 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 1.0.1
-Plugin URI: #
+Version: 1.0.2
+Plugin URI: https://whitepayments.com/
 Author: White Payments
 Author URI: http://www.whitepayments.com
 License: Under GPL2   
