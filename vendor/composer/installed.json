@@ -1,0 +1,32 @@
+[
+    {
+        "name": "white/white",
+        "version": "v1.2",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/WhitePayments/white-php.git",
+            "reference": "48cc5a372c042bcd0e951080c3db742528b2895f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/WhitePayments/white-php/zipball/48cc5a372c042bcd0e951080c3db742528b2895f",
+            "reference": "48cc5a372c042bcd0e951080c3db742528b2895f",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.2.*"
+        },
+        "time": "2014-10-20 03:36:44",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "White": "src/",
+                "White\\Test": "tests/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "White makes accepting online payments in the Middle East a piece of cake"
+    }
+]
