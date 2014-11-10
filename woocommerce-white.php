@@ -2,8 +2,8 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 1.1.1
-Plugin URI: #
+Version: 1.1.2
+Plugin URI: http://www.whitepayments.com
 Author: White Payments
 Author URI: http://www.whitepayments.com
 License: Under GPL2   
@@ -237,8 +237,8 @@ function woocommerce_white(){
 
             <!-- Credit card security code -->
             <p class="form-row">
-            <label for="cvv"><?php _e( 'Card security code', 'woocommerce' ) ?> <span class="required">*</span></label>
-            <input type="text" class="input-text" id="cvv" autocomplete="off" maxlength="4" style="width:55px" />
+            <label for="cvc"><?php _e( 'Card security code', 'woocommerce' ) ?> <span class="required">*</span></label>
+            <input type="text" class="input-text" id="cvc" autocomplete="off" maxlength="4" style="width:55px" />
             <span class="help"><?php _e( '3 or 4 digits usually found on the signature strip.', 'woocommerce' ) ?></span>
             </p>
 
@@ -295,7 +295,7 @@ function woocommerce_white(){
                                 number: jQuery('#ccNo').val(),
                                 exp_month: jQuery('#expMonth').val(),
                                 exp_year: jQuery('#expYear').val(),
-                                cvv: jQuery('#cvv').val()
+                                cvc: jQuery('#cvc').val()
                             },
                             amount: <?php global $woocommerce;echo($woocommerce->cart->total); ?>,
                             currency: '<?php echo get_woocommerce_currency() ?>'
@@ -311,7 +311,7 @@ function woocommerce_white(){
 
                 function clearPaymentFields() {
                     jQuery('#ccNo').val('');
-                    jQuery('#cvv').val('');
+                    jQuery('#cvc').val('');
                     jQuery('#expMonth').val('');
                     jQuery('#expYear').val('');
                 }
