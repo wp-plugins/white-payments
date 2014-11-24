@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 1.1.4
+Version: 1.1.5
 Plugin URI: http://www.whitepayments.com
 Author: White Payments
 Author URI: http://www.whitepayments.com
@@ -318,7 +318,7 @@ function woocommerce_white(){
 
             </script>
 
-            <script type="text/javascript" src="https://2c6a19c6bb1f6571950c-395de3b3cefca5c2745ee8be4cb990a5.ssl.cf3.rackcdn.com/white.min.js"></script>
+            <script type="text/javascript" src="https://fast.whitepayments.com/static/white.min.js"></script>
             <?php
         }
 
