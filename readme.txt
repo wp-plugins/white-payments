@@ -3,8 +3,8 @@ Contributors: jamesmay, yazinsai
 Donate link: https://whitepayments.com/
 Tags: white, payments, whitepayments, middle east payments, credit card, middle east payment gateway, payment gateway, whitepayments.com
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.1.6
+Tested up to: 4.0.1
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
