@@ -3,7 +3,7 @@
 /**
  * Class to hold White API settings
  * 
- * @author Sebastian Choren <schoren@rockingsoft.com>
+ * @author Yazin <yazin@whitepayments.com>
  * @link https://whitepayments.com/docs/
  * @license http://opensource.org/licenses/MIT
  */
@@ -33,6 +33,13 @@ class White
     'customer'      => '/v1/customers',
     'customer_list' => '/v1/customers'
   );
+
+  /*
+  * Path to the CA Certificates required when making CURL calls
+  */
+  public static function getCaPath() {
+    return __DIR__ . '/data/ca-certificates.crt';
+  }
 
   /**
   * sets API Key
