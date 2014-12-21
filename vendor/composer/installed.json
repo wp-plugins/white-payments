@@ -1,23 +1,23 @@
 [
     {
         "name": "white/white",
-        "version": "v1.4",
-        "version_normalized": "1.4.0.0",
+        "version": "1.4.1",
+        "version_normalized": "1.4.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/WhitePayments/white-php.git",
-            "reference": "391d21eebca896e46d3c027fd1f7e614a96dbfef"
+            "reference": "dac54b351c9d546c1b0e11d2cccaa7acc5c98d70"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/WhitePayments/white-php/zipball/391d21eebca896e46d3c027fd1f7e614a96dbfef",
-            "reference": "391d21eebca896e46d3c027fd1f7e614a96dbfef",
+            "url": "https://api.github.com/repos/WhitePayments/white-php/zipball/dac54b351c9d546c1b0e11d2cccaa7acc5c98d70",
+            "reference": "dac54b351c9d546c1b0e11d2cccaa7acc5c98d70",
             "shasum": ""
         },
         "require-dev": {
             "phpunit/phpunit": "4.2.*"
         },
-        "time": "2014-12-16 13:30:45",
+        "time": "2014-12-21 05:05:28",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
