@@ -2,10 +2,10 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 1.1.11
-Plugin URI: http://www.whitepayments.com
+Version: 2.0.0
+Plugin URI: https://www.whitepayments.com
 Author: White Payments
-Author URI: http://www.whitepayments.com
+Author URI: https://www.whitepayments.com
 License: Under GPL2   
 */
 
@@ -40,9 +40,9 @@ function woocommerce_white(){
 
             // Define user set variables
             $this->title = "Credit card (powered by White)";
-            $this->test_publishable_key = $this->get_option('test_publishable_key');
+            $this->test_open_key = $this->get_option('test_open_key');
             $this->test_secret_key = $this->get_option('test_secret_key');
-            $this->live_publishable_key = $this->get_option('live_publishable_key');
+            $this->live_open_key = $this->get_option('live_open_key');
             $this->live_secret_key = $this->get_option('live_secret_key');
             $this->description = $this->get_option('description');
             $this->test_mode = $this->get_option('test_mode');
@@ -73,7 +73,7 @@ function woocommerce_white(){
          * @return bool
          */
         function is_valid_for_use() {
-            if ( ! in_array( get_woocommerce_currency(), apply_filters( 'woocommerce_white_supported_currencies', array( 'AED', 'USD', 'BHD' ) ) ) ) return false;
+            if ( ! in_array( get_woocommerce_currency(), apply_filters( 'woocommerce_white_supported_currencies', array( 'AED', 'USD' ) ) ) ) return false;
 
             return true;
         }
@@ -127,10 +127,10 @@ function woocommerce_white(){
                     'description' => __( 'This is the description the user sees during checkout.', 'woocommerce' ),
                     'default' => __( 'Pay for your items with Credit Card', 'woocommerce' )
                 ),
-                'test_publishable_key' => array(
-                    'title' => __( 'Test Publishable Key', 'woocommerce' ),
+                'test_open_key' => array(
+                    'title' => __( 'Test Open Key', 'woocommerce' ),
                     'type'      => 'text',
-                    'description' => __( 'Please enter your test publishable key (you can get it from your White dashboard).', 'woocommerce' ),
+                    'description' => __( 'Please enter your test open key (you can get it from your White dashboard).', 'woocommerce' ),
                     'default' => '',
                     'desc_tip'      => true,
                     'placeholder' => ''
@@ -143,10 +143,10 @@ function woocommerce_white(){
                     'desc_tip'      => true,
                     'placeholder' => ''
                 ),
-                'live_publishable_key' => array(
-                    'title' => __( 'Live Publishable Key', 'woocommerce' ),
+                'live_open_key' => array(
+                    'title' => __( 'Live Open Key', 'woocommerce' ),
                     'type'      => 'text',
-                    'description' => __( 'Please enter your live publishable key (you can get it from your White dashboard).', 'woocommerce' ),
+                    'description' => __( 'Please enter your live open key (you can get it from your White dashboard).', 'woocommerce' ),
                     'default' => '',
                     'desc_tip'      => true,
                     'placeholder' => ''
@@ -165,15 +165,6 @@ function woocommerce_white(){
                     'label' => __( 'Enable Test mode', 'woocommerce' ),
                     'default' => 'no'
                 )
-                /*
-                , 'auto_add_customers' => array(
-                    'title' => __( 'Auto-add customers', 'woocommerce' ),
-                    'type' => 'checkbox',
-                    'label' => __( 'Automatically create customers', 'woocommerce' ),
-                    'description' => __( 'Automatically creates a customer for every transaction that is processed, so you can bill the same customer again in the future (from your White dashboard)' ),
-                    'desc_tip' => true,
-                    'default' => 'yes'
-                ) */
             );
 
         }
@@ -290,7 +281,7 @@ function woocommerce_white(){
                     if (jQuery('div.payment_method_white:first').css('display') === 'block') {
                         jQuery('#ccNo').val(jQuery('#ccNo').val().replace(/[^0-9 \.]+/g,''));
                         White.createToken({
-                            key: '<?php echo $this->test_mode == 'yes'? $this->test_publishable_key : $this->live_publishable_key ?>',
+                            key: '<?php echo $this->test_mode == 'yes'? $this->test_open_key : $this->live_open_key ?>',
                             card: {
                                 number: jQuery('#ccNo').val(),
                                 exp_month: jQuery('#expMonth').val(),
@@ -315,10 +306,9 @@ function woocommerce_white(){
                     jQuery('#expMonth').val('');
                     jQuery('#expYear').val('');
                 }
-
             </script>
 
-            <script type="text/javascript" src="https://fast.whitepayments.com/static/white.min.js"></script>
+            <script type="text/javascript" src="https://fast.whitepayments.com/whitejs/white.js"></script>
             <?php
         }
 
@@ -338,37 +328,18 @@ function woocommerce_white(){
                 $this->log->add( 'white', 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 
             // White Args
-            $white_customer_args = array(
+            $white_args = array(
                 'description' => "WooCommerce - ".$order->billing_email,
                 'card' => $_POST['whiteToken'],
-                'email' => $order->billing_email);
-
-            /*
-            $white_charge_args = array(
-                'card'          => $_POST['whiteToken'],
-                'currency'      => get_woocommerce_currency(),
-                'amount'        => $order->get_total());,
-
-                    // These fields are currently ignored (TODO: Track them)
-                    // TODO: Track 'client' (e.g. WooCommerce)
-
-                    // Order key
-                    'merchantOrderId' => $order->get_order_number(),
-
-                    // Billing Address info
-                    "billingAddr" => array(
-                        'name'          => $order->billing_first_name . ' ' . $order->billing_last_name,
-                        'addrLine1'     => $order->billing_address_1,
-                        'addrLine2'     => $order->billing_address_2,
-                        'city'          => $order->billing_city,
-                        'state'         => $order->billing_state,
-                        'zipCode'       => $order->billing_postcode,
-                        'country'       => $order->billing_country,
-                        'email'         => $order->billing_email,
-                        'phoneNumber'   => $order->billing_phone
-                    )
+                'currency' => get_woocommerce_currency(),
+                /**
+                 * TODO: 
+                 * Update the amount to consider currencies with varying
+                 * minimum currency amounts .. I'm just using 100 here for
+                 * USD and AED (both with 100 cents = 1 unit).
+                 */
+                'amount' => $order->get_total() * 100 
                 );
-            */
 
             try {
                 if ($this->test_mode == 'yes') {
@@ -377,13 +348,8 @@ function woocommerce_white(){
                     White::setApiKey($this->live_secret_key);
                 }
 
-                // Create the customer, then charge
-                $customer = White_Customer::create($white_customer_args);
-                $charge = White_Charge::create(array(
-                    'customer' => $customer['tag'],
-                    'currency' => get_woocommerce_currency(),
-                    'amount' => $order->get_total()
-                    ));
+                // Charge the token
+                $charge = White_Charge::create($white_args);
 
                 // No exceptions? Yaay, all done!
                 $order->payment_complete();
