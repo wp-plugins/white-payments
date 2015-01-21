@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 2.0.1
+Version: 2.0.2
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -280,16 +280,12 @@ function woocommerce_white(){
                     jQuery("#white_error_creditcard").hide();
                     if (jQuery('div.payment_method_white:first').css('display') === 'block') {
                         jQuery('#ccNo').val(jQuery('#ccNo').val().replace(/[^0-9 \.]+/g,''));
-                        White.createToken({
-                            key: '<?php echo $this->test_mode == 'yes'? $this->test_open_key : $this->live_open_key ?>',
-                            card: {
-                                number: jQuery('#ccNo').val(),
-                                exp_month: jQuery('#expMonth').val(),
-                                exp_year: jQuery('#expYear').val(),
-                                cvc: jQuery('#cvc').val()
-                            },
-                            amount: <?php global $woocommerce;echo($woocommerce->cart->total); ?>,
-                            currency: '<?php echo get_woocommerce_currency() ?>'
+                        var white = new White('<?php echo $this->test_mode == 'yes'? $this->test_open_key : $this->live_open_key ?>');
+                        white.createToken({
+                            number: jQuery('#ccNo').val(),
+                            exp_month: jQuery('#expMonth').val(),
+                            exp_year: jQuery('#expYear').val(),
+                            cvc: jQuery('#cvc').val()
                         }, whiteCallback);
                     } else {
                         jQuery('#place_order').unbind('click');
