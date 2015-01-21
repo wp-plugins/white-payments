@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0d4a606ed0a0a4fb6e6aed013f25a81a",
+    "hash": "0139c92b208f1dc24e00ca0897f96fb9",
     "packages": [
         {
             "name": "white/white",
-            "version": "1.4.1",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhitePayments/white-php.git",
-                "reference": "dac54b351c9d546c1b0e11d2cccaa7acc5c98d70"
+                "reference": "284a22a181b80615b37d94d2512e0793caef8e6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhitePayments/white-php/zipball/dac54b351c9d546c1b0e11d2cccaa7acc5c98d70",
-                "reference": "dac54b351c9d546c1b0e11d2cccaa7acc5c98d70",
+                "url": "https://api.github.com/repos/WhitePayments/white-php/zipball/284a22a181b80615b37d94d2512e0793caef8e6e",
+                "reference": "284a22a181b80615b37d94d2512e0793caef8e6e",
                 "shasum": ""
             },
             "require-dev": {
@@ -32,7 +32,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "White makes accepting online payments in the Middle East a piece of cake",
-            "time": "2014-12-21 05:05:28"
+            "time": "2015-01-17 06:12:09"
         }
     ],
     "packages-dev": [],
@@ -40,6 +40,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
