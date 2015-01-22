@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 2.0.2
+Version: 2.0.3
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -193,7 +193,7 @@ function woocommerce_white(){
             <input id="token" name="whiteToken" type="hidden" value="">
 
             <!-- Credit card number -->
-            <p class="form-row form-row-first">
+            <p class="form-row">
                 <label for="ccNo"><?php echo __( 'Credit Card number', 'woocommerce' ) ?> <span class="required">*</span></label>
                 <input type="text" class="input-text" id="ccNo" autocomplete="off" value="" />
             </p>
@@ -201,7 +201,7 @@ function woocommerce_white(){
             <div class="clear"></div>
 
             <!-- Credit card expiration -->
-            <p class="form-row form-row-first">
+            <p class="form-row">
                 <label for="cc-expire-month"><?php echo __( 'Expiration date', 'woocommerce') ?> <span class="required">*</span></label>
                 <select id="expMonth" class="woocommerce-select woocommerce-cc-month">
                     <option value=""><?php _e( 'Month', 'woocommerce' ) ?></option><?php
