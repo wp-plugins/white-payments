@@ -1,24 +1,26 @@
-=== Plugin Name ===
+=== White Payments ===
 Contributors: jamesmay
 Donate link: https://whitepayments.com/
 Tags: white, payments, whitepayments, middle east payments, credit card, middle east payment gateway, payment gateway, whitepayments.com
 Requires at least: 3.0.1
 Tested up to: 4.1.0
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-White makes accepting online payments in the Middle East ridiculously easy. No payment gateway, no merchant account. Get started in under 5 minutes.
+White makes it easy to accept online payments (credit and debit cards) in the Middle East. No setup fees, no monthly fees. Start in 5 minutes!
 
 == Description ==
 
-White is a full-stack payments solution, that allows you to process online payments on your website or mobile app. 
+White is the only payment solution you need to start accepting online payments. That's right, no merchant accounts, no payment gateways and no visits to the bank. Get started online, and in under 5 minutes. (*Currently only available to companies in the Middle East*)
 
-> If you're using Wordpress & WooCommerce, then you're in for a special treat!
+= Using Wordpress + WooCommerce? =
 
-We've developed this WooCommerce plugin to make integrating your store with White a walk in the park! In the same time it would take you to make a cup of coffee, you could be up and running with online payments in the Middle East! 
+Then you're going to love this!
 
-That's right. Doesn't matter if you're in Bahrain or the UAE, it'll work fine either way.
+This WooCommerce plugin makes integrating your store with White a walk in the park! In the same time it would take you to make a cup of some great turkish coffee, you could be up and running with online payments!
+
+Doesn't matter if you're in Bahrain or the UAE, it'll work fine either way.
 
 == Requirements ==
 
@@ -39,6 +41,9 @@ Got the account? Great .. now make sure to get the following details as well: `L
 Use PHP v5.4 or later.
 
 == Changelog ==
+
+= 2.0.4 =
+- Fixed an issue with the White Payments plugin not working when a 2Checkout plugin is installed.
 
 = 2.0.3 =
 - Removed `form-row-first` from checkout form

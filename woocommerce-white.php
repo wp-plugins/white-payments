@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 2.0.3
+Version: 2.0.4
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -190,20 +190,20 @@ function woocommerce_white(){
             </ul>
 
             <fieldset class='white-payments'>
-            <input id="token" name="whiteToken" type="hidden" value="">
+            <input id="white-token" name="whiteToken" type="hidden" value="">
 
             <!-- Credit card number -->
             <p class="form-row">
-                <label for="ccNo"><?php echo __( 'Credit Card number', 'woocommerce' ) ?> <span class="required">*</span></label>
-                <input type="text" class="input-text" id="ccNo" autocomplete="off" value="" />
+                <label for="white-ccNo"><?php echo __( 'Credit Card number', 'woocommerce' ) ?> <span class="required">*</span></label>
+                <input type="text" class="input-text" id="white-ccNo" autocomplete="off" value="" />
             </p>
 
             <div class="clear"></div>
 
             <!-- Credit card expiration -->
             <p class="form-row">
-                <label for="cc-expire-month"><?php echo __( 'Expiration date', 'woocommerce') ?> <span class="required">*</span></label>
-                <select id="expMonth" class="woocommerce-select woocommerce-cc-month">
+                <label for="white-expMonth"><?php echo __( 'Expiration date', 'woocommerce') ?> <span class="required">*</span></label>
+                <select id="white-expMonth" class="woocommerce-select woocommerce-cc-month">
                     <option value=""><?php _e( 'Month', 'woocommerce' ) ?></option><?php
                     $months = array();
                     for ( $i = 1; $i <= 12; $i ++ ) {
@@ -214,7 +214,7 @@ function woocommerce_white(){
                         printf( '<option value="%02d">%s</option>', $num, $name );
                     } ?>
                 </select>
-                <select id="expYear" class="woocommerce-select woocommerce-cc-year">
+                <select id="white-expYear" class="woocommerce-select woocommerce-cc-year">
                     <option value=""><?php _e( 'Year', 'woocommerce' ) ?></option>
                     <?php
                     $years = array();
@@ -228,8 +228,8 @@ function woocommerce_white(){
 
             <!-- Credit card security code -->
             <p class="form-row">
-            <label for="cvc"><?php _e( 'Card security code', 'woocommerce' ) ?> <span class="required">*</span></label>
-            <input type="text" class="input-text" id="cvc" autocomplete="off" maxlength="4" style="width:55px" />
+            <label for="white-cvc"><?php _e( 'Card security code', 'woocommerce' ) ?> <span class="required">*</span></label>
+            <input type="text" class="input-text" id="white-cvc" autocomplete="off" maxlength="4" style="width:55px" />
             <span class="help"><?php _e( '3 or 4 digits usually found on the signature strip.', 'woocommerce' ) ?></span>
             </p>
 
@@ -267,7 +267,7 @@ function woocommerce_white(){
                     else {
                         // Successfully retrieved a token
                         clearPaymentFields();
-                        jQuery('#token').val(response.id);
+                        jQuery('#white-token').val(response.id);
                         jQuery('#place_order').unbind('click');
                         jQuery('#place_order').click(function(e) {
                             return true;
@@ -279,13 +279,13 @@ function woocommerce_white(){
                 var retrieveToken = function () {
                     jQuery("#white_error_creditcard").hide();
                     if (jQuery('div.payment_method_white:first').css('display') === 'block') {
-                        jQuery('#ccNo').val(jQuery('#ccNo').val().replace(/[^0-9 \.]+/g,''));
+                        jQuery('#white-ccNo').val(jQuery('#white-ccNo').val().replace(/[^0-9 \.]+/g,''));
                         var white = new White('<?php echo $this->test_mode == 'yes'? $this->test_open_key : $this->live_open_key ?>');
                         white.createToken({
-                            number: jQuery('#ccNo').val(),
-                            exp_month: jQuery('#expMonth').val(),
-                            exp_year: jQuery('#expYear').val(),
-                            cvc: jQuery('#cvc').val()
+                            number: jQuery('#white-ccNo').val(),
+                            exp_month: jQuery('#white-expMonth').val(),
+                            exp_year: jQuery('#white-expYear').val(),
+                            cvc: jQuery('#white-cvc').val()
                         }, whiteCallback);
                     } else {
                         jQuery('#place_order').unbind('click');
@@ -297,10 +297,10 @@ function woocommerce_white(){
                 }
 
                 function clearPaymentFields() {
-                    jQuery('#ccNo').val('');
-                    jQuery('#cvc').val('');
-                    jQuery('#expMonth').val('');
-                    jQuery('#expYear').val('');
+                    jQuery('#white-ccNo').val('');
+                    jQuery('#white-cvc').val('');
+                    jQuery('#white-expMonth').val('');
+                    jQuery('#white-expYear').val('');
                 }
             </script>
 
