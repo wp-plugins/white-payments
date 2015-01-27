@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 2.0.4
+Version: 2.0.5
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -12,6 +12,10 @@ License: Under GPL2
 require plugin_dir_path(__FILE__).'vendor/autoload.php';
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/* Enable automatic updates to this plugin
+   ----------------------------------------------------------- */
+add_filter('auto_update_plugin', '__return_true');
 
 /* Add a custom payment class to WC
   ------------------------------------------------------------ */
