@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 2.0.5
+Version: 2.0.7
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -329,9 +329,11 @@ function woocommerce_white(){
 
             // White Args
             $white_args = array(
-                'description' => "WooCommerce - ".$order->billing_email,
+                'description' => "WooCommerce charge for ".$order->billing_email,
                 'card' => $_POST['whiteToken'],
                 'currency' => get_woocommerce_currency(),
+                'email' => $order->billing_email,
+                'ip' => $_SERVER['REMOTE_ADDR'],
                 /**
                  * TODO: 
                  * Update the amount to consider currencies with varying
