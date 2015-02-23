@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: White Payments
-Description: A full stack payment solution for the Middle East - www.whitepayments.com
-Version: 2.0.7
+Description: White makes it really easy to start accepting online payments (credit &amp; debit cards) in the Middle East. Sign up is instant, at https://whitepayments.com/
+Version: 2.0.8
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -43,7 +43,7 @@ function woocommerce_white(){
             $this->init_settings();
 
             // Define user set variables
-            $this->title = "Credit card (powered by White)";
+            $this->title = "Credit / Debit Card (powered by White)";
             $this->test_open_key = $this->get_option('test_open_key');
             $this->test_secret_key = $this->get_option('test_secret_key');
             $this->live_open_key = $this->get_option('live_open_key');
@@ -61,9 +61,6 @@ function woocommerce_white(){
 
             // Save options
             add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
-
-            // Payment listener/API hook
-            #add_action('woocommerce_api_wc_' . $this->id, array($this, 'check_ipn_response'));
 
             if (!$this->is_valid_for_use()){
                 $this->enabled = false;
@@ -195,6 +192,16 @@ function woocommerce_white(){
 
             <fieldset class='white-payments'>
             <input id="white-token" name="whiteToken" type="hidden" value="">
+
+            <?php
+            if ($this->test_mode == 'yes') { ?>
+                <div style="background-color:yellow;">
+                    You're in <strong>test mode</strong>. Make sure to use <a href="https://whitepayments.com/docs/testing" target="_blank">test cards to checkout</a> :)
+                    <br/>------<br/>
+                    <em>Tip: You can change this by going to WooCommerce -&gt; Settings -&gt; Checkout -&gt; White</em>
+                </div>
+            <?php }
+            ?>
 
             <!-- Credit card number -->
             <p class="form-row">
