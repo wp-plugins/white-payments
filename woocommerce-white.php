@@ -2,14 +2,14 @@
 /*
 Plugin Name: White Payments
 Description: White makes it really easy to start accepting online payments (credit &amp; debit cards) in the Middle East. Sign up is instant, at https://whitepayments.com/
-Version: 2.0.9
+Version: 2.0.10
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
 License: Under GPL2   
 */
 
-require plugin_dir_path(__FILE__).'vendor/autoload.php';
+require plugin_dir_path(__FILE__).'vendor/white/white/White.php';
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
