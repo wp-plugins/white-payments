@@ -2,7 +2,7 @@
 /*
 Plugin Name: White Payments
 Description: White makes it really easy to start accepting online payments (credit &amp; debit cards) in the Middle East. Sign up is instant, at https://whitepayments.com/
-Version: 2.0.11
+Version: 2.0.12
 Plugin URI: https://www.whitepayments.com
 Author: White Payments
 Author URI: https://www.whitepayments.com
@@ -368,7 +368,20 @@ function woocommerce_white(){
                 );
 
             } catch (White_Error $e) {
-                $woocommerce->add_error(__('Error:', 'woothemes') . $e->getMessage());
+                // TODO: Can we get the extra params (so the error is more apparent)?
+                // e.g. Instead of "request params are invalid", we get
+                // "extras":{"amount":["minimum amount (in the smallest currency unit) is 185 for AED"]
+                $message = __('Error:', 'woothemes') . $e->getMessage();
+
+                // If function should we use?
+                if(function_exists("wc_add_notice")) {
+                    // Use the new version of the add_error method
+                    wc_add_notice($message);
+                } else {
+                    // Use the old version
+                    $woocommerce->add_error($message);
+                }
+                
                 return;
             }
         }
